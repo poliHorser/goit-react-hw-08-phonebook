@@ -14,6 +14,26 @@ class App extends Component  {
       filter: ''
   }
 
+  
+  componentDidMount() {
+    const localData = localStorage.getItem('contacts')
+    if (localData) {
+      this.setState({
+        contacts: JSON.parse(localData)
+      })
+      
+    }
+  }
+
+  componentDidUpdate(_, prevState) {
+    if (prevState.contacts.length !== this.state.contacts.length) 
+      localStorage.setItem('contacts', JSON.stringify(this.state.contacts))
+        
+    
+  }
+  
+
+
   createContact = (data) => {
     const userNew = {
       id: nanoid(),
@@ -58,9 +78,9 @@ class App extends Component  {
       <div className='all'>
         <h1>Phonebook</h1>
         <Form createContact={this.createContact} />
-         <Filter value={filter} onChange={this.handleChange} />
+        <Filter value={filter} onChange={this.handleChange} />
         <ContactList contacts={filterContacts}
-                     contactDelete={this.contactDelete}/>
+          contactDelete={this.contactDelete} />
         
       </div>
     
