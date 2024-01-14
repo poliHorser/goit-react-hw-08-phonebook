@@ -1,44 +1,41 @@
-import React, { Component } from 'react';
+import React, { useState } from 'react';
 import './createForm.css'
 
-class Form extends Component {
+const Form = ({createContact}) => {
 
-    
-    state = {
-        name: '',
-        number: ''
-    }
+    const [formInput, setFormInput] = useState(
+     { name: '',
+       number: ''  }
+    )
    
-    handleChange = ({ target: { value, name } }) => {
-        console.log('value:', value)
-        return this.setState({
-            [name]: value.trim() 
-        })
+   
+    const handleChange = ({ target: { value, name } }) => {
+       setFormInput((prev) => ({
+      ...prev,
+      [name]: value.trim(),
+    }));
        
     }
 
     
-    handleSubmit = (e) => {
+    const handleSubmit = (e) => {
         e.preventDefault()
-        console.log(this.state)
-        this.props.createContact(this.state)
-        this.setState({
+        createContact(formInput)
+        setFormInput({
             name: " ",
             number: " "
         })
     }
-
-
-    render() {
+    const { name, number} = formInput
         return (
-            <form className='form' onSubmit={this.handleSubmit}>
+            <form className='form' onSubmit={handleSubmit}>
             <div>
                 <h2 className='title'>Name</h2>
                 <input className='input'
                        type="text"
                        name="name"   
-                       value={this.state.name}
-                       onChange={this.handleChange}
+                       value={name}
+                       onChange={handleChange}
                     required />
                 <label htmlFor=''></label>
             </div>
@@ -47,8 +44,8 @@ class Form extends Component {
                 <input className='input'
                        type="tel"
                        name="number"   
-                       value={this.state.number}
-                       onChange={this.handleChange}
+                       value={number}
+                       onChange={handleChange}
                     required />
                 <label htmlFor=''></label>
             </div>
@@ -58,5 +55,5 @@ class Form extends Component {
             </form>
         )
     }
-}
+
 export default Form

@@ -40,7 +40,7 @@ const App = () => {
 // 
 
     const contactDelete = (id) => {
-      setContacts((prev) => {prev.filter((el) =>el.id !== id)})}
+      setContacts((prev) => prev.filter((el) =>el.id !== id))}
 
 // 
     const handleChange = (e) => {
@@ -49,10 +49,10 @@ const App = () => {
 
 // 
    const getFilteredContacts = () => {
-    const normalizedFilter = filter.toLocaleLowerCase();
+    const normalizedFilter = filter.toLowerCase();
 
     return contacts.filter((contact) =>
-      contact.name && contact.name.includes(normalizedFilter)
+      contact.name.toLowerCase().includes(normalizedFilter)
     );
   };
 //
