@@ -34,42 +34,42 @@ class App extends Component  {
   
 
 
-  createContact = (data) => {
-    const userNew = {
-      id: nanoid(),
-      ...data
-    }
+//   createContact = (data) => {
+//     const userNew = {
+//       id: nanoid(),
+//       ...data
+//     }
 
-     const isDubl = this.state.contacts.find(
-      (el) => el.name.toLowerCase() === data.name.toLowerCase()
-    );
+//      const isDubl = this.state.contacts.find(
+//       (el) => el.name.toLowerCase() === data.name.toLowerCase()
+//     );
 
-    if (isDubl) {
-      return alert(`${data.name} is already in contacts`);
-    }
+//     if (isDubl) {
+//       return alert(`${data.name} is already in contacts`);
+//     }
 
-    this.setState((prevState) => ({
-      contacts: [...prevState.contacts, userNew],
-    }));
-  };
-  contactDelete = (id) => {
-    this.setState((prev) => ({
-      contacts: prev.contacts.filter((el) =>el.id !== id)
-    }))
-  }
+//     this.setState((prevState) => ({
+//       contacts: [...prevState.contacts, userNew],
+//     }));
+//   };
+//   contactDelete = (id) => {
+//     this.setState((prev) => ({
+//       contacts: prev.contacts.filter((el) =>el.id !== id)
+//     }))
+//   }
 
-  handleChange = (e) => {
-    this.setState({ filter: e.target.value });
-  };
+//   handleChange = (e) => {
+//     this.setState({ filter: e.target.value });
+//   };
 
-  getFilteredContacts = () => {
-    const { contacts, filter } = this.state;
-    const normalizedFilter = filter.toLowerCase();
+//   getFilteredContacts = () => {
+//     const { contacts, filter } = this.state;
+//     const normalizedFilter = filter.toLowerCase();
 
-    return contacts.filter((contact) =>
-      contact.name.toLowerCase().includes(normalizedFilter)
-    );
-  };
+//     return contacts.filter((contact) =>
+//       contact.name.toLowerCase().includes(normalizedFilter)
+//     );
+//   };
   
   render() {
     const filterContacts = this.getFilteredContacts()
