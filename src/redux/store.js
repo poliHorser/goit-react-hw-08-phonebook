@@ -1,11 +1,14 @@
-import { createStore } from "redux";
-import { devToolsEnhancer } from "@redux-devtools/extension";
-import reducer from "./reduser";
+import { configureStore } from "@reduxjs/toolkit";
+import persistStore from "redux-persist/es/persistStore";
 
 
-const enchancer = devToolsEnhancer()
+import rootReducer from "./rootReducer";
 
 
-const store = createStore(reducer, enchancer)
+export const store = configureStore({
+    reducer: rootReducer,
 
-export default store
+})
+
+export const persistore = persistStore(store)
+

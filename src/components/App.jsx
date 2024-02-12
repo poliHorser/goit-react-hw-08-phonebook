@@ -1,117 +1,66 @@
-import { useState, useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { ADD_CONTACTS } from "../redux/constants";
 
 import Form from './Form/CreateForm'
-import data from '../data/data'
 import ContactList from './ContactList/ContactList'
 import Filter from './Filter/Filter'
-import { addContacts } from "../redux/actions";
+
+
+import { addContacts, deleteContacts } from "../redux/contacts/contacts-slice";
+import { setFilter } from "../redux/filter/filter-slice";
+import { getFilteredContacts } from "../redux/filter/filter-selectors";
+
 
 const App = () => {
-  //  
-  const contacts = useSelector(store => store.contacts)
-  const [filter, setFilter] = useState('')
-
-  const dispatch = useDispatch()
-
-  const createContact = (data) => {
-    const action = addContacts(data)
-    dispatch(action)
-  }
-
-
-  //   const createContact = (data) => {
-//     const userNew = {
-//       id: nanoid(),
-//       ...data
-  //     }
   
+    const contacts = useSelector(getFilteredContacts)
 
+    const dispatch = useDispatch()
 
-  // const [contacts, setContacts] = useState(data)
-  
-// //mount
-//   useEffect(() => {
-//     const localData = localStorage.getItem('contacts')
-//     if (localData) {
-//       setContacts(JSON.parse(localData))
+    const createContact = (data) => {
       
-//     }
-//   }, [])
-  
-// //update
-//   useEffect(() => {
-//     localStorage.setItem('contacts', JSON.stringify(contacts))
-//   }, [contacts])
-// //
+      if (isDubl(data)) {
+              return alert(`${data.name} is already in contacts`);
+      }
+      
+      const action = addContacts(data)
+      // console.log(action)
+      dispatch(action)
+    }
 
 
-    // const isDubl = ({ name}) => {
-    //     const normalizedName = name.toLowerCase();
+    const contactDelete = (id) => {
+      dispatch(deleteContacts(id))
+    }
 
-    //     const dublicate = contacts.find(item => {
-    //         const normalizedCurrentName = item.name.toLowerCase();
-    //         return (normalizedCurrentName === normalizedName);
-    //     })
 
-    //     return Boolean(dublicate);
-    // }
-    // const isDubl = contacts.find((el) => el.name.toLowerCase() === data.name.toLowerCase());
-    //   if (isDubl) {
-    //     return alert(`${data.name} is already in contacts`);
-    //   }
+    const isDubl = ({ name}) => {
+      const normalizedName = name.toLowerCase();
 
-    // setContacts((prev) => [...prev, userNew])
+      const dublicate = contacts.find(item => {
+      const normalizedCurrentName = item.name.toLowerCase();
+      return (normalizedCurrentName === normalizedName);
+      
+      })
 
-//
+      return Boolean(dublicate);
+    }
 
-//     const contactDelete = (id) => {
-//       setContacts((prev) => prev.filter((el) =>el.id !== id))}
-
-// //
-//     const handleChange = (e) => {
-//       setFilter(e.target.value);
-//     };
-
-// //
-//    const getFilteredContacts = () => {
-//     const normalizedFilter = filter.toLowerCase();
-
-//     return contacts.filter((contact) =>
-//       contact.name.toLowerCase().includes(normalizedFilter)
-//     );
-//   };
-// //
-
-//   const filterContacts = getFilteredContacts()
-  
-//   return (
-//     <div className='all'>
-//           <h1>Phonebook</h1>
-//           <Form createContact={createContact} />
-//           <Filter value={filter} onChange={handleChange} />
-//           <ContactList contacts={filterContacts}
-//             contactDelete={contactDelete} />
-          
-//     </div>
+    const changeFilter = ({target}) => dispatch(setFilter(target.value))
     
-//   )
-  // }
 
-  return (
-    <div className='all'>
-          <h1>Phonebook</h1>
-          <Form  createContact={createContact}/>
-          <Filter />
-          <ContactList contacts={contacts}/>
-          
-    </div>
-    
-  )
-  }
+    return (
+      <div className='all'>
+            <h1>Phonebook</h1>
+            <Form  createContact={createContact}/>
+            <Filter onChange={changeFilter}/>
+            <ContactList contacts={contacts}  contactDelete={contactDelete}/>
+            
+      </div>
+      
+    )
+    }
 
-export { App }
+  export { App }
 
 
 
