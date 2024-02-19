@@ -1,6 +1,6 @@
-export const getFilter = store => store.filter
+export const selectFilter = store => store.filter
 
-export const getFilteredContacts = store => {
+export const selectFilteredContacts = store => {
     const { contacts, filter } = store
     
     if (!filter) {

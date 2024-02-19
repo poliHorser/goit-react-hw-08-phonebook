@@ -5,26 +5,34 @@ import ContactList from './ContactList/ContactList'
 import Filter from './Filter/Filter'
 
 
-import { addContacts, deleteContacts } from "../redux/contacts/contacts-slice";
+import {  deleteContacts } from "../redux/contacts/contacts-slice";
 import { setFilter } from "../redux/filter/filter-slice";
-import { getFilteredContacts } from "../redux/filter/filter-selectors";
+// import { selectFilteredContacts } from "../redux/filter/filter-selectors";
+import {selectAllContacts} from "../redux/contacts/contacts-selectors"
+ 
+import { fetchContacts, fetchAddContacts } from "../redux/contacts/contacts-operations";
+
+import { useEffect } from "react";
 
 
 const App = () => {
-  
-    const contacts = useSelector(getFilteredContacts)
+    const {items, isLoading, error} = useSelector(selectAllContacts)
 
     const dispatch = useDispatch()
+  
+    useEffect(() => {
+      dispatch(fetchContacts())
+      
+      }, [dispatch])
 
     const createContact = (data) => {
       
       if (isDubl(data)) {
               return alert(`${data.name} is already in contacts`);
       }
+    
+      dispatch(fetchAddContacts(data))
       
-      const action = addContacts(data)
-      // console.log(action)
-      dispatch(action)
     }
 
 
@@ -36,7 +44,7 @@ const App = () => {
     const isDubl = ({ name}) => {
       const normalizedName = name.toLowerCase();
 
-      const dublicate = contacts.find(item => {
+      const dublicate = items.find(item => {
       const normalizedCurrentName = item.name.toLowerCase();
       return (normalizedCurrentName === normalizedName);
       
@@ -52,9 +60,12 @@ const App = () => {
       <div className='all'>
             <h1>Phonebook</h1>
             <Form  createContact={createContact}/>
-            <Filter onChange={changeFilter}/>
-            <ContactList contacts={contacts}  contactDelete={contactDelete}/>
-            
+        <Filter onChange={changeFilter} />
+        {isLoading && <p>...Loading</p>}
+        {error && <p>{error}</p>}
+        {items && items.length > 0 && (
+          <ContactList contacts={items} contactDelete={contactDelete} />
+        )} 
       </div>
       
     )
