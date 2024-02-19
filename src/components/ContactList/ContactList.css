@@ -1,0 +1,29 @@
+.contact_li{
+    height: 50px;
+        margin-top: 15px;
+        text-align: center;
+        display: flex;
+        flex-direction: row;
+}
+
+.contact_title{
+    font-size: 30px;
+}
+
+.contact_title span {
+    font-style: italic;
+    margin-right: 20px;
+}
+
+.contact_p{
+    height: 15px;
+}
+
+.contact_btn{
+    border: solid 1px rgb(0, 0, 0);
+        background-color: rgb(245, 195, 195);
+        width: 50px;
+        margin-top: 20px;
+        border-radius: 20px;
+        margin-left: 20px;
+}

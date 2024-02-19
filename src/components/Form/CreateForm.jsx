@@ -26,7 +26,8 @@ const Form = ({createContact}) => {
             number: " "
         })
     }
-    const { name, number} = formInput
+    const { name, number } = formInput
+    
         return (
             <form className='form' onSubmit={handleSubmit}>
             <div>

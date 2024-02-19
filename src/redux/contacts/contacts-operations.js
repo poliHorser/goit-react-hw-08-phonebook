@@ -1,31 +1,56 @@
 import * as contactsApi from "../../api/contacts-api"
-import {fetchContactsError, fetchContactsLoading, fetchContactsSuccess, fetchAddError, fetchAddSuccess, fetchAddLoading} from "./contacts-slice"
+import { createAsyncThunk } from "@reduxjs/toolkit"
 
-export const fetchContacts = () => {
-    const func = async (dispatch) => {
+export const fetchContacts = createAsyncThunk("contacts/fetchAll",
+    async(_, thunkAPI) => {
         try {
-            dispatch(fetchContactsLoading())
             const data = await contactsApi.requestContacts()
-            dispatch(fetchContactsSuccess(data))
+            return data
         }
         catch (error) {
-            dispatch(fetchContactsError(error.message))
-        }        
-    }
-    return func
-}
+            return thunkAPI.rejectWithValue(error.message)
+        }
+    })
 
-export const fetchAddContacts = (body) => {
-    const func = async (dispatch) => {
+export const fetchAddContacts = createAsyncThunk("contacts/add",
+    async (body, {rejectWithValue}) => {
         try {
-            dispatch(fetchAddLoading())
             const data = await contactsApi.requestAddContacts(body)
-            dispatch(fetchAddSuccess(data))
+            return data
         }
         catch (error) {
-            dispatch(fetchAddError(error.message))
-        }        
-    }
-    return func
-}
+            return rejectWithValue(error.message)
+        }
+    },
+    {
+        condition: ({name}, { getState }) => {
+            
+            const {contacts} = getState()
+            const normalizedName = name.toLowerCase();
 
+            const dublicate = contacts.items.find(item => {
+            const normalizedCurrentName = item.name.toLowerCase();
+            return (normalizedCurrentName === normalizedName);
+            
+            })
+            if (dublicate) {
+                alert(`${name} is already in contacts`);
+                return false
+            }
+        }
+    }
+)
+
+
+export const fetchDeleteContacts = createAsyncThunk("contacts/delete",
+    async (id, {rejectWithValue}) => {
+        try {
+            await contactsApi.requestDeleteContacts(id)
+            return id
+        }
+        catch (error) {
+            return rejectWithValue(error.message)
+        }
+    }
+    
+)

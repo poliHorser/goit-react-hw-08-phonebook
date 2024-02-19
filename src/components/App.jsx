@@ -5,18 +5,18 @@ import ContactList from './ContactList/ContactList'
 import Filter from './Filter/Filter'
 
 
-import {  deleteContacts } from "../redux/contacts/contacts-slice";
 import { setFilter } from "../redux/filter/filter-slice";
-// import { selectFilteredContacts } from "../redux/filter/filter-selectors";
-import {selectAllContacts} from "../redux/contacts/contacts-selectors"
- 
-import { fetchContacts, fetchAddContacts } from "../redux/contacts/contacts-operations";
+// import {selectAllContacts} from "../redux/contacts/contacts-selectors"
+import {selectFilter} from "../redux/filter/filter-selectors"
+import { fetchContacts, fetchAddContacts, fetchDeleteContacts } from "../redux/contacts/contacts-operations";
 
 import { useEffect } from "react";
 
 
 const App = () => {
-    const {items, isLoading, error} = useSelector(selectAllContacts)
+  const items  = useSelector(selectFilter)
+  const {isLoading, error} = useSelector(selectFilter)
+  
 
     const dispatch = useDispatch()
   
@@ -25,32 +25,13 @@ const App = () => {
       
       }, [dispatch])
 
-    const createContact = (data) => {
-      
-      if (isDubl(data)) {
-              return alert(`${data.name} is already in contacts`);
-      }
-    
+    const createContact = (data) => {    
       dispatch(fetchAddContacts(data))
-      
     }
 
 
     const contactDelete = (id) => {
-      dispatch(deleteContacts(id))
-    }
-
-
-    const isDubl = ({ name}) => {
-      const normalizedName = name.toLowerCase();
-
-      const dublicate = items.find(item => {
-      const normalizedCurrentName = item.name.toLowerCase();
-      return (normalizedCurrentName === normalizedName);
-      
-      })
-
-      return Boolean(dublicate);
+      dispatch(fetchDeleteContacts(id))
     }
 
     const changeFilter = ({target}) => dispatch(setFilter(target.value))
