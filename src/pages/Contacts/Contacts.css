@@ -1,0 +1,12 @@
+.all{
+    background-color: rgb(251, 231, 208);
+    box-shadow: 20px 10px 10px rgb(192, 164, 131);
+    margin: 30px;
+    padding: 20px;
+    justify-content: left;
+    align-items: center;
+    display: flex;
+    flex-direction: column;
+
+
+}

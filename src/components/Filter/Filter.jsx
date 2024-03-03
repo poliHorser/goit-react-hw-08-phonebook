@@ -5,7 +5,7 @@ const Filter = ({ value, onChange }) => {
       <div>
           <h3 className='serch-title'>Search contacs</h3>
           <input
-        className='input'
+        className='form-input'
         type="text"
         id="searchInput"
         value={value}

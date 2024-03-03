@@ -1,0 +1,42 @@
+.HomeDiv{
+    width: 600px;
+    height: 200px;
+    display: flex;
+    flex-direction: column;
+    text-align: center;
+    justify-content: center;
+    background-color: rgb(251, 231, 208);
+    box-shadow: 20px 10px 10px rgb(192, 164, 131);
+    margin-right: auto;
+    margin-left: auto;
+}
+
+.HomeTitle{
+    font-style: 40px;
+    font-style:italic;
+}
+
+.img-div{
+    justify-content: center;
+    display: flex;
+}
+
+.img-home{
+    width: 150px;
+    height: 150px;
+    margin-top: 60px;
+    animation-name: spin;
+    animation-duration: 2s;
+    animation-timing-function: linear;
+    animation-iteration-count: infinite;
+}
+
+@keyframes spin {
+    0% {
+        transform: rotate(0deg);
+    }
+
+    100% {
+        transform: rotate(360deg);
+    }
+}

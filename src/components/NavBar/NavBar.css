@@ -1,13 +1,17 @@
 .navbar{
+    min-height: 80px;
     background-color: rgb(251, 231, 208);
     display: flex;
     width: 100%;
+    padding: 15px;
     flex-direction: row;
     justify-content: right;
     align-items: center;
+    justify-content: space-between;
     margin-bottom: 100px;
     border-radius: 5px;
     box-shadow: 20px 10px 10px rgb(192, 164, 131);
 }
+
 
 

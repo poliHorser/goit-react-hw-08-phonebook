@@ -9,9 +9,6 @@
     padding-bottom: 10px;
 }
 
-.element_li{
-
-}
 
 .element_nav{
     text-decoration: none;
@@ -19,6 +16,4 @@
 
 .element_p{
     color: black;
-    font-size: 25px;
-
 }

@@ -1,11 +1,13 @@
 import { useDispatch, useSelector } from "react-redux";
 
-import Form from '../components/Form/CreateForm'
-import ContactList from '../components/ContactList/ContactList'
-import Filter from '../components/Filter/Filter'
-import { setFilter } from "../redux/filter/filter-slice";
-import {selectFilter} from "../redux/filter/filter-selectors"
-import { fetchContacts, fetchAddContacts, fetchDeleteContacts } from "../redux/contacts/contacts-operations";
+import './Contacts.css'
+
+import Form from '../../components/Form/CreateForm'
+import ContactList from '../../components/ContactList/ContactList'
+import Filter from '../../components/Filter/Filter'
+import { setFilter } from "../../redux/filter/filter-slice";
+import {selectFilter} from "../../redux/filter/filter-selectors"
+import { fetchContacts, fetchAddContacts, fetchDeleteContacts } from "../../redux/contacts/contacts-operations";
 
 import { useEffect } from "react";
 

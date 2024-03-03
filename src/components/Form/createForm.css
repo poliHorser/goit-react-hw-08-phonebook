@@ -1,10 +1,13 @@
 .form {
     width: 350px;
+    border-radius: 5px;
     padding-bottom: 40px;
-    padding-left: 20px;
+    /* padding-left: 20px; */
+    text-align: center;
     display: flex;
     flex-direction: column;
-    border: solid 2px black;
+    border: solid 2px rgb(192, 164, 131);
+    box-shadow: 20px 10px 10px rgb(192, 164, 131);
 }
 
 .input {
@@ -18,15 +21,19 @@
 }
 
 .title {
-    font-size: 30px;
+    font-style: 20px;
+    text-align: center;
+    /* font-size: 30px; */
     color: black;
 
 }
 
 
 .btn {
-    border: solid 1px rgb(176, 174, 174);
-    background-color: rgb(136, 195, 246);
+    border: solid 2px rgb(192, 164, 131);
+    background-color: white;
+    margin-left: auto;
+    margin-right: auto;
     width: 150px;
     height: 40px;
     margin-top: 20px;

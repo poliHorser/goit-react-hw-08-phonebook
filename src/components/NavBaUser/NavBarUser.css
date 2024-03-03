@@ -1,0 +1,8 @@
+.nav-btn{
+    background-color: white;
+    border-radius: 5px;
+    border: none;
+    width: 70px;
+    height: 40px;
+    box-shadow: 20px 10px 10px rgb(192, 164, 131);
+}
