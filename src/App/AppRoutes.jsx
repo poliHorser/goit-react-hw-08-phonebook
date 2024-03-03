@@ -1,5 +1,5 @@
 import { Routes, Route } from 'react-router-dom';
-
+import LoginPage from 'pages/LoginPage';
 import { HomePage } from 'pages/HomePage';
 import SharedLayout from 'components/SharedLayout/SharedLayout';
 import NotFoundPage from 'pages/NotFoundPage';
@@ -12,6 +12,7 @@ export const AppRoutes = () => {
         <Route path="/" element={<SharedLayout />}>
           <Route index element={<HomePage />} />   
           <Route path="/register" element={<RegisterPage />} />
+          <Route path="/login" element={<LoginPage/>}/>
           <Route path="*" element={<NotFoundPage />} />
         </Route>
         
