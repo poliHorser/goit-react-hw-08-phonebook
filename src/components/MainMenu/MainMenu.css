@@ -1,0 +1,7 @@
+.nav-ul{
+    display: flex;
+    flex-direction: row;
+    gap: 25px;
+    list-style: none;
+    padding-bottom: 100px;
+}

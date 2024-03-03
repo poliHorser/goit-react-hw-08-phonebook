@@ -11,13 +11,13 @@ const menuItems = [
         id: nanoid(),
         to: "/contacts",
         text: "Contacts",
-        private: false,
+        private: true,
     },
     {
         id: nanoid(),
         to: "/register",
         text: "Register",
-        private: true,
+        private: false,
     },
 ];
 

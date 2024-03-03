@@ -1,0 +1,50 @@
+.log-form {
+    flex-direction: column;
+    border-radius: 5px;
+    background-color: rgb(251, 231, 208);
+    box-shadow: 20px 10px 10px rgb(250, 221, 186);
+    display: flex;
+    padding: 15px;
+    max-width: 600px;
+    height: auto;
+    text-align: left;
+    justify-content: center;
+    text-align: center;
+
+}
+
+.form-div {
+    margin-bottom: 15px;
+}
+
+.form-input {
+    box-shadow: 5px 3px 6px rgb(250, 221, 186);
+    border-color: wheat;
+    border-radius: 5px;
+    height: 30px;
+    width: 300px;
+}
+
+.form-label {
+    margin-right: 15px;
+}
+
+.form-title {
+    font-size: 30px;
+}
+
+.form-btn {
+    border-color: white;
+    border-radius: 5px;
+    box-shadow: 5px 3px 6px rgb(250, 221, 186);
+    cursor: pointer;
+    padding: 12px 20px;
+    text-transform: uppercase;
+    width: 200px;
+}
+
+.form-p {
+    margin-top: 0;
+    font-style: 30px;
+    /* font-style: italic; */
+}

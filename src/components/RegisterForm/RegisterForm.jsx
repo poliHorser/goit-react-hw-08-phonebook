@@ -1,5 +1,5 @@
 import { useState, useId } from "react";
-
+import './RegisterForm.css'
 
 const INITIAL_STATE = {
         name: "",
@@ -39,21 +39,24 @@ const RegisterForm = ({onSubmit}) => {
 
     
     return (
+        <div className="log-form">
+            <h1 className="form-title">Please Sign Up</h1>
         <form onSubmit={handleSubmit}>
-            <div>
-                <label htmlFor={nameId}>Name:</label>
-                <input value={name} onChange={handleChange} name="name" id={nameId} required/>
+            <div className="form-div">
+                <label htmlFor={nameId} className="form-label"><p className="form-p">Name</p></label>
+                <input className="form-input" value={name} onChange={handleChange} name="name" id={nameId} required/>
             </div>
-            <div>
-                <label htmlFor={emailId}>Email:</label>
-                <input value={email} onChange={handleChange} type="email" name="email" id={emailId} required/>
+            <div className="form-div">
+                <label htmlFor={emailId} className="form-label"><p className="form-p">Email</p></label>
+                <input className="form-input" value={email} onChange={handleChange} type="email" name="email" id={emailId} required/>
             </div>
-            <div>
-                <label  htmlFor={passwordId}>Password:</label>
-                <input value={password} onChange={handleChange} type="password" name="password" id={passwordId} required/>
+            <div className="form-div">
+                <label  htmlFor={passwordId} className="form-label"><p className="form-p">Password</p></label>
+                <input className="form-input" value={password} onChange={handleChange} type="password" name="password" id={passwordId} required/>
             </div>
-            <button type="submit">Register</button>
-        </form>
+            <button className="form-btn" type="submit">Register</button>
+            </form>
+        </div>
     )
 }
 

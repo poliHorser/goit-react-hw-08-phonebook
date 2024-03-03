@@ -1,13 +1,18 @@
-import { useSelector } from "react-redux"
+import { useSelector, useDispatch } from "react-redux"
 
+import { logout } from "../../redux/auth/auth-operations";
 import { selectUser } from "../../redux/auth/auth-selectors";
 
 const NavBarUser = () => {
-    const {name} = useSelector(selectUser);
+    
+    const { email } = useSelector(selectUser);
+    const dispatch = useDispatch();
+
+    const onLogout = ()=> dispatch(logout());
     return (
         <div>
-            {name}
-            <button>LogOut</button>
+            {email}
+            <button onClick={onLogout}>LogOut</button>
         </div>
     )
 }
