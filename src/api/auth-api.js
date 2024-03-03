@@ -5,6 +5,6 @@ const authInstance = axios.create({
 })
 
 export const signupRequest = async body => {
-    const {data} = await authInstance.post("/users/signup", body);
+    const {data} = await authInstance.post("/users/login", body);
     return data;
 };

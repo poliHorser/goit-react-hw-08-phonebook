@@ -1,17 +1,26 @@
+import { useSelector } from "react-redux";
+import { selectIsLogin } from "../../redux/auth/auth-selectors";
+import menuItems from "components/NavBar/NavBarMenu";
+
 import { NavLink } from "react-router-dom";
 
-const MainMenu = ()=> {
+const MainMenu = () => {
+    
+    const isLogin = useSelector(selectIsLogin);
+
+    const filteredMenuItems = !isLogin ? menuItems.filter(item => !item.private) : menuItems;
+
+
+    const elements = filteredMenuItems.map(({id, to, text}) => (
+                                                        <li key={id}>
+                                                            <NavLink to={to}>{text}</NavLink>
+                                                        </li>
+                                                        ))
+
     return (
-        <div className="main-div">
-            <ul className="header">
-                <li className="header-li">
-                    <NavLink className="link" to="/">Contacts</NavLink>               
-                </li>
-                {/* <li className="header-li">
-                    <NavLink  className="link" to="/movies">Movies</NavLink>
-                </li> */}
-            </ul>
-        </div>
+        <ul>
+           {elements}
+        </ul>
     )
 }
 

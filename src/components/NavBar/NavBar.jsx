@@ -1,11 +1,15 @@
 import { Link } from "react-router-dom";
+import { useSelector } from "react-redux";
 
 import MainMenu from "../MainMenu/MainMenu";
 import NavBarAuth from '../NavBarAuth/NavBarAuth'
 import NavBarUser from "../NavBaUser/NavBarUser"
 import "./NavBar.css"
+
+import { selectIsLogin } from "../../redux/auth/auth-selectors";
+
 const NavBar = () => {
-    const isLogin = false
+    const isLogin = useSelector(selectIsLogin);
     return (
         <navbar className='navbar'>
             <Link to ="/"> Logo
