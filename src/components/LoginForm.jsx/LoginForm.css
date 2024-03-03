@@ -5,10 +5,10 @@
     flex-direction: column;
     border-radius: 5px;
     background-color: rgb(251, 231, 208);
-    box-shadow: 20px 10px 10px rgb(250, 221, 186);
+    box-shadow: 20px 10px 10px rgb(192, 164, 131);
     display: flex;
     padding: 15px;
-    max-width: 600px;
+    max-width: 1000px;
     height: auto;
     text-align: left;
     justify-content: center;

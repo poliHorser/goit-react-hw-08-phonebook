@@ -1,6 +1,6 @@
 import { Routes, Route } from 'react-router-dom';
 import LoginPage from 'pages/LoginPage';
-import { HomePage } from 'pages/HomePage';
+import { Contacts } from 'pages/Contacts';
 import SharedLayout from 'components/SharedLayout/SharedLayout';
 import NotFoundPage from 'pages/NotFoundPage';
 import RegisterPage from 'pages/RegisterPage'
@@ -16,7 +16,7 @@ export const AppRoutes = () => {
             <Route path="/login" element={<LoginPage />} />
           </Route>
           <Route element={<PrivateRoute/>}>
-            <Route path="/contacts" element={<HomePage/>}/>
+            <Route path="/contacts" element={<Contacts/>}/>
             <Route path="*" element={<NotFoundPage />} />
           </Route>
         </Route>

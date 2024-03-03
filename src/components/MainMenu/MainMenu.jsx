@@ -12,8 +12,8 @@ const MainMenu = () => {
 
 
     const elements = filteredMenuItems.map(({id, to, text}) => (
-                                                        <li key={id}>
-                                                            <NavLink to={to}>{text}</NavLink>
+                                                        <li key={id} className="element_li">
+                                                            <NavLink to={to} className="element_nav"><p className="element_p">{text}</p></NavLink>
                                                         </li>
                                                         ))
 
